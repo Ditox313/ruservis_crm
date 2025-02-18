@@ -1,5 +1,6 @@
+
 module.exports = {
-    mongoUri: 'mongodb+srv://xsodex:19731379User@avtoprokat-xs.ao62v.mongodb.net/myFirstDatabase?retryWrites=true&w=majority',
+    mongoUri: 'mongodb://127.0.0.1:27017/ruservice-crm',
     jwt: 'xsodex',
 };
 // if (process.env.NODE_ENV === "production") {

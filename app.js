@@ -3,8 +3,8 @@ const authRoutes = require('./routes/auth.js');
 const bodyParser = require('body-parser');
 const cors = require('cors');
 const morgan = require('morgan');
-// const mongoose = require('mongoose');
-// const keys = require('./config/keys.js');
+const mongoose = require('mongoose');
+const keys = require('./config/keys.js');
 // const passport = require('passport');
 
 
@@ -13,14 +13,13 @@ const app = express();
 
 
 // Подключаемся к MongoDB
-// mongoose.connect(keys.mongoUri, { useNewUrlParser: true, useUnifiedTopology: true, useCreateIndex: true })
-//     .then(function() {
-//         console.log('Мы подключились к БД приложения!!!');
-//     })
-//     .catch(function(error) {
-//         console.log(error);
-//     });
-
+mongoose.connect(keys.mongoUri)
+  .then(function() {
+      console.log('Мы подключились к БД приложения!!!');
+  })
+  .catch(function(error) {
+      console.log(error);
+  });
 
 
 // Регистрируем модуль bodyParser
