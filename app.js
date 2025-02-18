@@ -1,5 +1,5 @@
 const express = require('express');
-// const authRoutes = require('./routes/auth.js');
+const authRoutes = require('./routes/auth.js');
 // const bodyParser = require('body-parser');
 // const cors = require('cors');
 // const morgan = require('morgan');
