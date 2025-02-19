@@ -44,7 +44,7 @@ app.use('/api/auth', authRoutes);
 
 
 // Добавляем возможность отдавать с сервера картинки по запросу. (Когда будет запрос к uploads, делай эту папку статической)
-// app.use('/uploads/cars', express.static('uploads/cars'));
+app.use('/uploads/account', express.static('uploads/account'));
 
 
 // Экспортируем наружу

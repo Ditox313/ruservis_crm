@@ -2,7 +2,7 @@ const express = require('express');
 const router = express.Router();
 const controller = require('../../controllers/account/auth.js');
 const passport = require('passport');
-// const upload = require('../../middleware/upload-account-user-img.js');
+const upload = require('../../middleware/upload-account-user-img.js');
 
 
 
@@ -13,7 +13,7 @@ router.post('/login', controller.login);
 router.post('/register', controller.register);
 
 // Роут на updateUser
-// router.patch('/updateUser', passport.authenticate('jwt', { session: false }), upload.single('avatar'), controller.updateUser);
+router.patch('/updateUser', passport.authenticate('jwt', { session: false }), upload.single('avatar'), controller.updateUser);
 
 
 
