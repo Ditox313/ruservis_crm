@@ -1,12 +1,19 @@
+
 import { Component } from '@angular/core';
-import { RouterOutlet } from '@angular/router';
+import { Store } from '@ngrx/store';
 
 @Component({
   selector: 'app-root',
-  imports: [RouterOutlet],
   templateUrl: './app.component.html',
-  styleUrl: './app.component.css'
+  styleUrls: ['./app.component.css'],
+  standalone: false
 })
 export class AppComponent {
-  title = 'client';
+  constructor( private store: Store ) { }
+
+
+
+  ngOnInit() {
+
+  }
 }
