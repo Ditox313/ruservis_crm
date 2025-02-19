@@ -43,18 +43,6 @@ const User = new Schema({
         required: true,
     },
 
-    doverenostNumber: {
-        type: String,
-        required: false,
-        default: null
-    },
-
-    doverenostDate: {
-        type: String,
-        required: false,
-        default: ''
-    },
-
     dateCreate: {
         type: Date,
         required: true,
