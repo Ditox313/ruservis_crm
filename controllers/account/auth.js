@@ -133,7 +133,7 @@ module.exports.updateUser = async function (req, res) {
       // Убедитесь, что функция errorHandler отправляет ответ и завершает выполнение
       return;
     }
-  };
+};
 
 
 

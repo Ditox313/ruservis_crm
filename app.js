@@ -5,7 +5,7 @@ const cors = require('cors');
 const morgan = require('morgan');
 const mongoose = require('mongoose');
 const keys = require('./config/keys.js');
-// const passport = require('passport');
+const passport = require('passport');
 
 
 
@@ -35,8 +35,8 @@ app.use(cors());
 
 
 // Инициализируем passport и подключаем файл обработчик для логики защиты и проверки роутов
-// app.use(passport.initialize());
-// require('./middleware/passport')(passport);
+app.use(passport.initialize());
+require('./middleware/passport')(passport);
 
 
 // Регистрируем роут auth
