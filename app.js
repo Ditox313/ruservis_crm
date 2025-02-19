@@ -1,5 +1,5 @@
 const express = require('express');
-const authRoutes = require('./routes/auth.js');
+const authRoutes = require('./routes/account/auth.js');
 const bodyParser = require('body-parser');
 const cors = require('cors');
 const morgan = require('morgan');
@@ -13,11 +13,7 @@ const app = express();
 
 
 // Подключаемся к MongoDB
-mongoose.connect(keys.mongoUri, {
-  useNewUrlParser: true,
-  useUnifiedTopology: true,
-  useCreateIndex: true
-})
+mongoose.connect(keys.mongoUri, {})
   .then(() => {
     console.log('Мы подключились к БД приложения!!!');
   })
