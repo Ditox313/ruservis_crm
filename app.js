@@ -5,7 +5,7 @@ const cors = require('cors');
 const morgan = require('morgan');
 const mongoose = require('mongoose');
 const keys = require('./config/keys.js');
-const passport = require('passport');
+// const passport = require('passport');
 
 
 
@@ -13,12 +13,16 @@ const app = express();
 
 
 // Подключаемся к MongoDB
-mongoose.connect(keys.mongoUri)
-  .then(function() {
-      console.log('Мы подключились к БД приложения!!!');
+mongoose.connect(keys.mongoUri, {
+  useNewUrlParser: true,
+  useUnifiedTopology: true,
+  useCreateIndex: true
+})
+  .then(() => {
+    console.log('Мы подключились к БД приложения!!!');
   })
-  .catch(function(error) {
-      console.log(error);
+  .catch((error) => {
+    console.log('Ошибка подключения к БД:', error);
   });
 
 
