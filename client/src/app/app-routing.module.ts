@@ -1,20 +1,10 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 
-
-// Массив наших роутов. Роуты делим на layouts
-const routes: Routes = [
-  
-];
+const routes: Routes = [];
 
 @NgModule({
-  
-  imports: [
-    RouterModule.forRoot(routes)  // Импортируем модуль для регистрации наших роутов
-  ],
-  
-  exports: [
-    RouterModule    // Возвращаем модуль уже сконфигурированный с зарегистрированными роутами
-  ]
+  imports: [RouterModule.forRoot(routes)],
+  exports: [RouterModule]
 })
 export class AppRoutingModule { }
