@@ -29,7 +29,7 @@
 }
 
 .auth_layout_top__content div:last-child a:hover {
-    color: var(--main);
+    color: var(--main) !important;
     background-color: var(--white);
     transition: all 0.3s;
     border: 1px solid var(--main);
@@ -40,11 +40,6 @@
     margin-right: 15px;
 }
 
-.auth_layout_main__content
-{
-    display: flex;
-    justify-content: center;
-}
 
 
 .active
@@ -57,9 +52,43 @@
 a
 {
     outline: none;
+    color: var(--black);
 }
 
 
+footer
+{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    padding-bottom: 20px;
+    background-color: var(--main);
+    padding-top: 20px;
+}
+
+footer a
+{
+    color: #fff;
+}
+
+
+.auth_layout_agrostarnn
+{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    height: 100%;
+
+}
+
+
+p
+{
+    margin-top: 15px;
+    color: #fff;
+}
 
 @media screen and (max-width: 576px) {
 

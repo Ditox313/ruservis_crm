@@ -13,10 +13,42 @@ body { margin: 0; font-family: 'Montserrat' !important; overflow-x: hidden;}
 }
 
 
+.xs_default_shadow
+{
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2); /* Глубокая мягкая тень */
+}
+
+div
+{
+    box-sizing: border-box;
+}
+
+
 :root {
     --main: #F28510;
     --white: #fff;
+    --red: #FF2400;
+    --black: #333;
 }
+
+
+
+.errorValidate {
+    display: block;
+    color: var(--white);
+    padding-left: 25px;
+    margin-bottom: 10px;
+    background-color: var(--red);
+    text-align: left;
+}
+
+
+
+.invalid
+{
+    border-bottom:2px solid var(--red) !important;
+}
+
 
 
 
@@ -75,6 +107,12 @@ fieldset
 .p-disabled,
 .p-component:disabled {
     opacity: 1 !important;
+}
+
+
+p
+{
+    margin: 0;
 }
 
 
