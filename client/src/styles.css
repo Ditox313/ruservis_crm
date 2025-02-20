@@ -13,6 +13,10 @@ body { margin: 0; font-family: 'Montserrat' !important; overflow-x: hidden;}
 }
 
 
+:root {
+    --main: #F28510;
+    --white: #fff;
+}
 
 
 

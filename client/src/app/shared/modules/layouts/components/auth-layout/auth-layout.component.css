@@ -1,6 +1,7 @@
+
 .auth_layout_top
 {
-    background-color: #fff;
+    background-color: var(--white);
     padding: 15px 0;
 }
 
@@ -19,19 +20,19 @@
 
 .auth_layout_top__content div:last-child a
 {
-    color: #F28510;
+    color: var(--main);
     display: inline-block;
     padding: 7px 15px;
-    border: 1px solid #fff;
+    border: 1px solid var(--white);
     text-align: center;
     transition: all 0.3s;
 }
 
 .auth_layout_top__content div:last-child a:hover {
-    color: #F28510;
-    background-color: #fff;
+    color: var(--main);
+    background-color: var(--white);
     transition: all 0.3s;
-    border: 1px solid #F28510;
+    border: 1px solid var(--main);
 }
 
 .auth_layout_top__content div:last-child a:first-child
@@ -48,8 +49,8 @@
 
 .active
 {
-    background-color: #F28510;
-    color: #fff !important;
+    background-color: var(--main);
+    color: var(--white) !important;
 }
 
 
