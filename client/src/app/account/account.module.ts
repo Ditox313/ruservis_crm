@@ -7,7 +7,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { LoginPageComponent } from './components/login-page/login-page.component';
 import { RegisterPageComponent } from './components/register-page/register-page.component';
 import { getRoutes } from './routes/account.route';
-// import { LayoutsModule } from '../shared/modules/layouts/layouts.module';
+import { LayoutsModule } from '../shared/modules/layouts/layouts.module';
 // import { AuthService } from './services/auth.service';
 // import { StoreModule } from '@ngrx/store';
 // import { reducers } from './store/reducers';
@@ -28,7 +28,7 @@ import { getRoutes } from './routes/account.route';
     ReactiveFormsModule,
     BrowserAnimationsModule,
     RouterModule.forChild(getRoutes()),
-    // LayoutsModule,
+    LayoutsModule,
     // LoaderModule,
     // StoreModule.forFeature('account', reducers),
     // EffectsModule.forFeature([AccountEffect]),

@@ -1,0 +1,18 @@
+<header *ngIf="currentUser">
+    <div class="page_title">{{title}} <span *ngIf="number">{{number}}</span></div>
+
+    <div class="account">
+        <div class="back" (click)="isGoBack()">
+            <p-button icon="pi pi-chevron-left" styleClass="p-button-sm"></p-button>
+        </div>
+
+        <div class="avatar_trigger" (click)="setVisibleAccountInfo()">
+            <img src="{{currentUser.avatar}}" alt="user">
+        </div>
+
+        <div  class="account_info" [ngClass]="{'account_info_dn': !isVisibleAccountInfo}" #accountInfo>
+            <div>{{currentUser.secondName}} {{currentUser.name}}</div>
+            <div (click)="logout()">ВЫЙТИ</div>
+        </div>
+    </div>
+</header>

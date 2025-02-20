@@ -1,7 +1,7 @@
 {
-    "name": "ruservis_crm",
+    "name": "agrostarnn_crm",
     "version": "1.0.0",
-    "description": "CRM для компании РУСервис",
+    "description": "CRM система для компании Агростар-НН",
     "main": "index.js",
     "scripts": {
         "start": "node  index",

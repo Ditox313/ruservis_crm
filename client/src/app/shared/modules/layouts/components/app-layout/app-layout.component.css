@@ -1,0 +1,51 @@
+.app_layout{
+    display: flex;
+    font-family: 'Montserrat', sans-serif;
+}
+
+
+.sidebar
+{
+    min-height: 100vh;
+    width: 15%;
+    background-color: #194A9E;
+    padding: 20px;
+    padding-bottom: 0;
+}
+
+.content{
+    width: 85%;
+    padding: 0 0px 20px 0px;
+}
+
+.logo
+{
+    margin-bottom: 50px;
+}
+
+nav li a
+{
+    display: block;
+    padding: 15px;
+    color: #fff;
+    opacity: 0.5;
+    text-transform: uppercase;
+    display: flex;
+    align-items: center;
+    border-radius: 5px;
+}
+
+nav li a i{
+    margin-right: 10px;
+}
+
+.active a
+{
+    opacity: 1 !important;
+    -webkit-box-shadow: 0px 0px 8px 6px rgba(255, 255, 255, 0.1);
+    -moz-box-shadow: 0px 0px 8px 6px rgba(255, 255, 255, 0.1);
+    box-shadow: 0px 0px 8px 6px rgba(255, 255, 255, 0.1);
+    background-color: #fff;
+    color: #194A9E !important;
+    font-weight: 500;
+}

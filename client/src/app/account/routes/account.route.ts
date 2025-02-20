@@ -1,3 +1,4 @@
+import { AuthLayoutComponent } from "../../shared/modules/layouts/components/auth-layout/auth-layout.component";
 import { LoginPageComponent } from "../components/login-page/login-page.component";
 import { RegisterPageComponent } from "../components/register-page/register-page.component";
 import { Routes } from '@angular/router';
@@ -13,7 +14,7 @@ export function getRoutes(): Routes {
     return [
         {
             path: '',
-            // component: AuthLayoutComponent,
+            component: AuthLayoutComponent,
             children: [
                 {
                     path: '',
