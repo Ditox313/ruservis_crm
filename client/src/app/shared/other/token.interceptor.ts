@@ -8,7 +8,8 @@ import { Observable, throwError } from 'rxjs';
 import { Injectable } from "@angular/core";
 import { HttpErrorResponse, HttpEvent, HttpHandler, HttpInterceptor, HttpRequest } from '@angular/common/http';
 import { catchError } from 'rxjs/operators';
-import { AuthService } from 'src/app/account/services/auth.service';
+import { AuthService } from '../../account/services/auth.service';
+
 
 @Injectable() //Означает что мы будем инжектировать в класс нужные сервисы
 

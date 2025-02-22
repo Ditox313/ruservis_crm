@@ -23,7 +23,8 @@ export class LoginPageComponent implements OnInit, OnDestroy {
 
   constructor(
     private route: ActivatedRoute,
-    private auth: AuthService
+    private auth: AuthService,
+    private router: Router,
     ) {}
 
 
@@ -72,12 +73,12 @@ export class LoginPageComponent implements OnInit, OnDestroy {
         next: (params: Params) => {
           if (params['registered']) {
             // this.messageService.add({ severity: 'success', summary: 'Теперь вы можете зайти в систему используя свои данные', detail: 'Поздравляем!' });
-            alert('Теперь вы можете зайти в систему используя свои данные')
+            // alert('Теперь вы можете зайти в систему используя свои данные')
           } else if (params['accessDenied']) {
             // this.messageService.add({ severity: 'error', summary: 'Сначала авторизируйтесь в системе', detail: 'Введите свои данные' });
-            alert('Сначала авторизируйтесь в системе')
+            // alert('Сначала авторизируйтесь в системе')
           } else if (params['sessionFailed']) {
-            alert('Пожалуйста войдите в систему заново')
+            // alert('Пожалуйста войдите в систему заново')
             // this.messageService.add({ severity: 'error', summary: 'Пожалуйста войдите в систему заново', detail: 'Попробуйте еще раз' });
           }
         }
@@ -95,7 +96,7 @@ export class LoginPageComponent implements OnInit, OnDestroy {
       };
 
       this.auth.login(user).subscribe(()=>{
-        console.log('Успешно!');
+        this.router.navigate(['/account-settings-page'])
       },)
 
     }

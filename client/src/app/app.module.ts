@@ -6,14 +6,9 @@ import { AccountModule } from './account/account.module';
 import { HTTP_INTERCEPTORS } from '@angular/common/http';
 import { RouterModule } from '@angular/router';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-// import { TokenInterceptor } from './shared/other/token.interceptor';
-// import { StoreModule } from '@ngrx/store';
-// import { StoreDevtoolsModule } from '@ngrx/store-devtools';
-// import { EffectsModule } from '@ngrx/effects';
-
-
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
+import { TokenInterceptor } from './shared/other/token.interceptor';
 
 @NgModule({
   declarations: [
@@ -31,13 +26,15 @@ import { AppComponent } from './app.component';
     // EffectsModule.forRoot([]),
   ],
   providers: [
-    provideHttpClient(withInterceptorsFromDi(),
-    // {
-    //   provide: HTTP_INTERCEPTORS,
-    //   multi: true,
-    //   useClass: TokenInterceptor,
-    // },
-  )
+    // Настройка HTTP-клиента
+    provideHttpClient(withInterceptorsFromDi()),
+
+    // Настройка интерцептора
+    {
+      provide: HTTP_INTERCEPTORS,
+      useClass: TokenInterceptor,
+      multi: true,
+    },
   ],
   bootstrap: [AppComponent]
 })
