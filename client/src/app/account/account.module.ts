@@ -10,12 +10,11 @@ import { getRoutes } from './routes/account.route';
 import { LayoutsModule } from '../shared/modules/layouts/layouts.module';
 import { AuthService } from './services/auth.service';
 import { AccountSettingPageComponent } from './components/account-setting-page/account-setting-page.component';
-// import { AuthService } from './services/auth.service';
-// import { StoreModule } from '@ngrx/store';
-// import { reducers } from './store/reducers';
-// import { LoaderModule } from '../shared/modules/loader/loader.module';
-// import { EffectsModule } from '@ngrx/effects';
-// import { AccountEffect } from './store/effects/account.effect';
+import { StoreModule } from '@ngrx/store';
+import { reducers } from './store/reducers';
+import { LoaderModule } from '../shared/modules/loader/loader.module';
+import { Actions, EffectsModule } from '@ngrx/effects';
+import { AccountEffect } from './store/effects/account.effect';
 
 
 
@@ -32,12 +31,14 @@ import { AccountSettingPageComponent } from './components/account-setting-page/a
     BrowserAnimationsModule,
     RouterModule.forChild(getRoutes()),
     LayoutsModule,
-    // LoaderModule,
-    // StoreModule.forFeature('account', reducers),
-    // EffectsModule.forFeature([AccountEffect]),
+    LoaderModule,
+    StoreModule.forFeature('account', reducers),
+    EffectsModule.forFeature([AccountEffect]),
   ],
   providers: [
     provideHttpClient(withInterceptorsFromDi()),
+    AuthService,
+    Actions
   ],
 })
 export class AccountModule { }

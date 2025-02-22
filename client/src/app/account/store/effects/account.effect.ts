@@ -1,8 +1,7 @@
-import {Injectable} from '@angular/core'
+import {inject, Injectable} from '@angular/core'
 import {createEffect, Actions, ofType} from '@ngrx/effects'
 import {map, catchError, switchMap, tap} from 'rxjs/operators'
 import {HttpErrorResponse} from '@angular/common/http'
-import { MessageService } from 'primeng/api'
 import {
   loginAction,
   loginSuccessAction,
@@ -19,7 +18,7 @@ import {
   updateUserAction,
   updateUserSuccessAction,
   updateUserFailureAction,
-} from 'src/app/account/store/actions/account.action';
+} from '../../store/actions/account.action';
 import {AuthService} from '../../services/auth.service'
 import {of} from 'rxjs'
 import {Router} from '@angular/router'
@@ -32,11 +31,12 @@ import { UserResponceRegister } from '../../types/account.interfaces'
 @Injectable()
 export class AccountEffect {
   constructor(
-    private actions$: Actions,
     private authService: AuthService,
     private router: Router,
-    private messageService: MessageService, 
   ) {}
+
+  // Инжектируем по новому
+  private actions$ = inject(Actions);
 
   login$ = createEffect(() =>
     this.actions$.pipe(
@@ -47,7 +47,8 @@ export class AccountEffect {
             return loginSuccessAction({data: data}); 
           }),
           catchError((errorResponse: HttpErrorResponse) => {
-            this.messageService.add({ severity: 'error', summary: `${errorResponse.error.message}`, detail: 'Попробуйте еще раз' });
+            // this.messageService.add({ severity: 'error', summary: `${errorResponse.error.message}`, detail: 'Попробуйте еще раз' });
+            alert('Попробуйте еще раз')
             return of(
               loginFailureAction({ errors: errorResponse.error.errors })
             );
@@ -80,7 +81,8 @@ export class AccountEffect {
             return logoutSuccessAction();
           }),
           catchError((errorResponse: HttpErrorResponse) => {
-            this.messageService.add({ severity: 'error', summary: `Ошибка выхода из системы`, detail: 'Попробуйте еще раз' });
+            // this.messageService.add({ severity: 'error', summary: `Ошибка выхода из системы`, detail: 'Попробуйте еще раз' });
+            alert('Ошибка выхода из системы')
             return of(
               logoutFailureAction({ errors: 'Ошибка выхода из системы' })
             );
@@ -106,7 +108,8 @@ export class AccountEffect {
           }),
 
           catchError((errorResponse: HttpErrorResponse) => {
-            this.messageService.add({ severity: 'error', summary: `${errorResponse.error.message}`, detail: 'Попробуйте еще раз' });
+            // this.messageService.add({ severity: 'error', summary: `${errorResponse.error.message}`, detail: 'Попробуйте еще раз' });
+            alert('Ошибка выхода из системы')
             return of(
               registerFailureAction({ errors: errorResponse.error.message })
             );
@@ -140,11 +143,13 @@ export class AccountEffect {
       switchMap(({ user, avatar }) => {
         return this.authService.updateUser(user, avatar).pipe(
           map((data) => {
-            this.messageService.add({ severity: 'success', summary: `Пользователь обновлен`, detail: 'Успешно!' });
+            // this.messageService.add({ severity: 'success', summary: `Пользователь обновлен`, detail: 'Успешно!' });
+            alert('Пользователь обновлен')
             return updateUserSuccessAction({ data: data });
           }),
           catchError((errorResponse: HttpErrorResponse) => {
-            this.messageService.add({ severity: 'error', summary: `Ошибка обновления`, detail: 'Попробуйте еще раз' });
+            // this.messageService.add({ severity: 'error', summary: `Ошибка обновления`, detail: 'Попробуйте еще раз' });
+            alert('Ошибка обновления')
             return of(
               updateUserFailureAction({ errors: errorResponse.error.errors })
             );

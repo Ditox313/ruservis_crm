@@ -1,8 +1,7 @@
 import {createAction, props} from '@ngrx/store'
-
-import {ActionTypes} from 'src/app/account/store/actionTypes'
 import { UserRequestLogin, UserRequestRegister, UserResponceLogin, UserResponceRegister } from '../../types/account.interfaces';
-import { AppStateInterface } from 'src/app/shared/types/interfaces';
+import { AppStateInterface } from '../../../shared/types/interfaces';
+import { ActionTypes } from '../actionTypes';
 
 
 // Login

@@ -9,6 +9,10 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { TokenInterceptor } from './shared/other/token.interceptor';
+import { provideStore, StoreModule } from '@ngrx/store';
+import { EffectsModule } from '@ngrx/effects';
+import { provideStoreDevtools } from '@ngrx/store-devtools';
+
 
 @NgModule({
   declarations: [
@@ -21,9 +25,9 @@ import { TokenInterceptor } from './shared/other/token.interceptor';
     RouterModule,
     BrowserAnimationsModule,
     AccountModule,
-    // StoreModule.forRoot({}, {}),
-    // StoreDevtoolsModule.instrument({ maxAge: 25, logOnly: !isDevMode() }),
-    // EffectsModule.forRoot([]),
+    StoreModule.forRoot({}, {}),
+    // StoreDevtoolsModule.instrument({ maxAge: 25, logOnly: false }),
+    EffectsModule.forRoot([]),
   ],
   providers: [
     // Настройка HTTP-клиента
@@ -35,6 +39,17 @@ import { TokenInterceptor } from './shared/other/token.interceptor';
       useClass: TokenInterceptor,
       multi: true,
     },
+    
+    // Настройки StoreDevtoolsModule
+    provideStore(),
+    provideStoreDevtools({
+      maxAge: 25, 
+      logOnly: !isDevMode(),
+      autoPause: true,
+      trace: false,
+      traceLimit: 75, 
+      connectInZone: true 
+    })
   ],
   bootstrap: [AppComponent]
 })
