@@ -6,6 +6,11 @@
 export interface UserRequestLogin {
     email: string
     password: string
+    phone?: string
+    avatar?: string
+    name?: string
+    secondName?: string
+    lastName?: string,
 }
 
 // Интерфейс для User при ответе авторизации

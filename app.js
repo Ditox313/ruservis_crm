@@ -22,16 +22,25 @@ mongoose.connect(keys.mongoUri, {})
   });
 
 
+
+// Регистрируем Morgan 
+app.use(morgan('dev'));
+
+
+
 // Регистрируем модуль bodyParser
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
 
 
-// Регистрируем Morgan 
-app.use(morgan('dev'));
+
 
 // Регистрируем Cors
-app.use(cors());
+app.use(cors({
+  origin: 'http://localhost:4200',
+  methods: ['GET', 'POST', 'PUT', 'DELETE', 'PATCH', 'OPTIONS'],
+  credentials: true
+}));
 
 
 // Инициализируем passport и подключаем файл обработчик для логики защиты и проверки роутов
@@ -40,7 +49,7 @@ require('./middleware/passport')(passport);
 
 
 // Регистрируем роут auth
-app.use('/api/auth', authRoutes);
+app.use('/api/account/auth', authRoutes);
 
 
 // Добавляем возможность отдавать с сервера картинки по запросу. (Когда будет запрос к uploads, делай эту папку статической)

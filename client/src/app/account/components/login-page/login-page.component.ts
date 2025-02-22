@@ -1,8 +1,10 @@
 import { Component } from '@angular/core';
-import { AfterViewInit, ChangeDetectorRef, Injectable, OnDestroy, OnInit } from '@angular/core';
+import {Injectable, OnDestroy, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute, Params, Router } from '@angular/router';
 import { Observable, Subscription } from 'rxjs';
+import { UserRequestLogin } from '../../types/account.interfaces';
+import { AuthService } from '../../services/auth.service';
 // import { isLoadingSelector } from '../../store/selectors';
 
 @Component({
@@ -11,7 +13,7 @@ import { Observable, Subscription } from 'rxjs';
   templateUrl: './login-page.component.html',
   styleUrl: './login-page.component.css'
 })
-export class LoginPageComponent {
+export class LoginPageComponent implements OnInit, OnDestroy {
   form!: FormGroup;
   formLoginSub$!: Subscription
   paramsSub$!: Subscription
@@ -20,7 +22,8 @@ export class LoginPageComponent {
 
 
   constructor(
-    private route: ActivatedRoute
+    private route: ActivatedRoute,
+    private auth: AuthService
     ) {}
 
 
@@ -86,15 +89,14 @@ export class LoginPageComponent {
     // Отправка формы
     onSubmit()
     {
-      // const user: UserRequestLogin = {
-      //   email: this.form.value.email,
-      //   password: this.form.value.password,
-      // };
-
-       const user = {
+      const user: UserRequestLogin = {
         email: this.form.value.email,
         password: this.form.value.password,
       };
+
+      this.auth.login(user).subscribe(()=>{
+        console.log('Успешно!');
+      },)
 
       console.log(user);
     }

@@ -3,6 +3,8 @@ import { Injectable } from "@angular/core";
 import { Observable, of, tap } from 'rxjs';
 import { UserRequestLogin, UserRequestRegister, UserResponceLogin, UserResponceRegister } from '../types/account.interfaces';
 
+// Обрати внимание в proxy.conf.json никаких звездочек типа /api/* быть не должно. иначае будет ошибка cannot post
+
 
 // Даем возможность инжектировать сервисы в класс
 @Injectable({

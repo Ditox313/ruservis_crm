@@ -36,7 +36,6 @@ import { AuthService } from './services/auth.service';
   ],
   providers: [
     provideHttpClient(withInterceptorsFromDi()),
-    AuthService
   ],
 })
 export class AccountModule { }
