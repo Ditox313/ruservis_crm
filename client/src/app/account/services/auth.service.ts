@@ -23,13 +23,17 @@ export class AuthService {
 
   // Авторизация пользователя
   login(user: UserRequestLogin): Observable<UserResponceLogin> {
-    return this.http.post<UserResponceLogin>('/api/account/auth/login', user)
-      .pipe(
-        tap(({ token }) => {
-          localStorage.setItem('auth-token', token); //Добавляем токен в localStorage
+    return this.http.post<UserResponceLogin>('/api/account/auth/login', user).pipe(
+      tap({
+        next: ({ token }) => {
+          localStorage.setItem('auth-token', token);
           this.setToken(token);
-        })
-      );
+        },
+        error: (err) => {
+          console.error('Ошибка при авторизации:', err);
+        },
+      })
+    );
   }
 
 
@@ -77,15 +81,6 @@ export class AuthService {
       fd.append('avatar', avatar, avatar.name);
     }
 
-    if (user.doverenostNumber) {
-      fd.append('doverenostNumber', user.doverenostNumber);
-    }
-
-    if (user.doverenostDate) {
-      fd.append('doverenostDate', user.doverenostDate);
-    }
-
-    
     return this.http.patch<UserResponceRegister>('/api/account/auth/updateUser/', fd);
   }
 

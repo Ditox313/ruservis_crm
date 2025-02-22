@@ -6,13 +6,6 @@
 export interface UserRequestLogin {
     email: string
     password: string
-    phone?: string
-    avatar?: string
-    name?: string
-    secondName?: string
-    lastName?: string,
-    doverenostNumber?: string
-    doverenostDate?: string
 }
 
 // Интерфейс для User при ответе авторизации
@@ -26,8 +19,6 @@ export interface UserResponceLogin {
         name: string
         secondName: string
         lastName: string
-        doverenostNumber?: string
-        doverenostDate?: string
         _id?: string
     }
 }
@@ -53,8 +44,6 @@ export interface UserResponceRegister {
     name: string
     secondName: string
     lastName: string
-    doverenostNumber?: string | undefined
-    doverenostDate?: string | undefined
     _id?: string
 }
 

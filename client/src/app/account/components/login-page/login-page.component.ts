@@ -20,7 +20,7 @@ export class LoginPageComponent {
 
 
   constructor(
-    private route: ActivatedRoute,
+    private route: ActivatedRoute
     ) {}
 
 
@@ -32,6 +32,7 @@ export class LoginPageComponent {
     // initValues() {
     //   this.isLoadingSelector$ = this.store.pipe(select(isLoadingSelector))
     // }
+
   
     ngAfterViewInit(): void {
       this.getParams()
@@ -58,6 +59,9 @@ export class LoginPageComponent {
         ]),
       });
     }
+
+
+
   
     // Получаем параметры
     getParams() {
@@ -65,9 +69,12 @@ export class LoginPageComponent {
         next: (params: Params) => {
           if (params['registered']) {
             // this.messageService.add({ severity: 'success', summary: 'Теперь вы можете зайти в систему используя свои данные', detail: 'Поздравляем!' });
+            alert('Теперь вы можете зайти в систему используя свои данные')
           } else if (params['accessDenied']) {
             // this.messageService.add({ severity: 'error', summary: 'Сначала авторизируйтесь в системе', detail: 'Введите свои данные' });
+            alert('Сначала авторизируйтесь в системе')
           } else if (params['sessionFailed']) {
+            alert('Пожалуйста войдите в систему заново')
             // this.messageService.add({ severity: 'error', summary: 'Пожалуйста войдите в систему заново', detail: 'Попробуйте еще раз' });
           }
         }
@@ -90,9 +97,5 @@ export class LoginPageComponent {
       };
 
       console.log(user);
-      
     }
-
-    
-
 }

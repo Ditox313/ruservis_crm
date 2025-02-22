@@ -8,6 +8,7 @@ import { LoginPageComponent } from './components/login-page/login-page.component
 import { RegisterPageComponent } from './components/register-page/register-page.component';
 import { getRoutes } from './routes/account.route';
 import { LayoutsModule } from '../shared/modules/layouts/layouts.module';
+import { AuthService } from './services/auth.service';
 // import { AuthService } from './services/auth.service';
 // import { StoreModule } from '@ngrx/store';
 // import { reducers } from './store/reducers';
@@ -35,7 +36,7 @@ import { LayoutsModule } from '../shared/modules/layouts/layouts.module';
   ],
   providers: [
     provideHttpClient(withInterceptorsFromDi()),
-    // AuthService
+    AuthService
   ],
 })
 export class AccountModule { }
