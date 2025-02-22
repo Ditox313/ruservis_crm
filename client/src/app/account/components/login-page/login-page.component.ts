@@ -98,6 +98,5 @@ export class LoginPageComponent implements OnInit, OnDestroy {
         console.log('Успешно!');
       },)
 
-      console.log(user);
     }
 }

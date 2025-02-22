@@ -37,7 +37,6 @@ app.use(bodyParser.json());
 
 // Регистрируем Cors
 app.use(cors({
-  origin: 'http://localhost:4200',
   methods: ['GET', 'POST', 'PUT', 'DELETE', 'PATCH', 'OPTIONS'],
   credentials: true
 }));
