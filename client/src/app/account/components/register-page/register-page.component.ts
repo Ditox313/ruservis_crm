@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { UserRequestRegister } from '../../types/account.interfaces';
 import { Observable, Subscription } from 'rxjs';
+import { AuthService } from '../../services/auth.service';
 // import { Store, select } from '@ngrx/store';
 // import { isLoadingSelector } from '../../store/selectors';
 // import { registerAction } from '../../store/actions/account.action';
@@ -18,6 +19,7 @@ export class RegisterPageComponent implements OnInit {
   isLoadingSelector$!: Observable<boolean | null>
 
   constructor(
+      private auth: AuthService
     // private store: Store
   ) { }
 
@@ -65,6 +67,10 @@ export class RegisterPageComponent implements OnInit {
       secondName: this.form.value.secondName,
       lastName: this.form.value.lastName,
     };
+
+    this.auth.register(user).subscribe(()=>{
+      console.log('Успешно!');
+    },)
 
     // this.store.dispatch(registerAction({ user }))
 
