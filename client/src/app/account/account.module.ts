@@ -9,6 +9,7 @@ import { RegisterPageComponent } from './components/register-page/register-page.
 import { getRoutes } from './routes/account.route';
 import { LayoutsModule } from '../shared/modules/layouts/layouts.module';
 import { AuthService } from './services/auth.service';
+import { AccountSettingPageComponent } from './components/account-setting-page/account-setting-page.component';
 // import { AuthService } from './services/auth.service';
 // import { StoreModule } from '@ngrx/store';
 // import { reducers } from './store/reducers';
@@ -21,7 +22,8 @@ import { AuthService } from './services/auth.service';
 @NgModule({
   declarations: [
     LoginPageComponent,
-    RegisterPageComponent
+    RegisterPageComponent,
+    AccountSettingPageComponent
   ],
   imports: [
     CommonModule,
