@@ -101,14 +101,19 @@ const accountReducer = createReducer(
   ),
   on(
     updateStateSuccessAction,
-    (state, action): AccountStateInterface => ({
-      ...state,
-      isLoggedIn: action.data.account.isLoggedIn,
-      token: action.data.account.token,
-      currentUser: action.data.account.currentUser,
-      isLoading: action.data.account.isLoading,
-      validationErrors: action.data.account.validationErrors
-    }),
+    (state, action): AccountStateInterface => {
+      if (!action.data || !action.data.account) {
+        return state; // Возвращаем текущее состояние, если данные отсутствуют
+      }
+      return {
+        ...state,
+        isLoggedIn: action.data.account.isLoggedIn,
+        token: action.data.account.token,
+        currentUser: action.data.account.currentUser,
+        isLoading: action.data.account.isLoading,
+        validationErrors: action.data.account.validationErrors
+      };
+    }
   ),
   on(
     updateStateFailureAction,
