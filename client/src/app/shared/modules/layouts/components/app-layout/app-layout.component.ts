@@ -19,40 +19,16 @@ export class AppLayoutComponent implements OnInit {
 
   links: any = [
     {
-      url: '/list-smena',
+      url: '/test',
       name: 'Смены',
       icon: 'pi-check-square'
     },
     {
-      url: '/list-cars',
+      url: '/test2',
       name: 'Автопарк',
       icon: 'pi-car'
     },
-    {
-      url: '/list-bookings',
-      name: 'Брони',
-      icon: 'pi-book'
-    },
-    {
-      url: '/list-clients-fiz',
-      name: 'Клиенты',
-      icon: 'pi-users'
-    },
-    {
-      url: '/list-partners',
-      name: 'Партнеры',
-      icon: 'pi-user-edit'
-    },
-    {
-      url: '/list-masters-priem',
-      name: 'Персонал',
-      icon: 'pi-id-card'
-    },
-    {
-      url: '/list-settings',
-      name: 'Настройки',
-      icon: 'pi-cog'
-    },
+
     {
       url: '/account-settings-page',
       name: 'Аккаунт',

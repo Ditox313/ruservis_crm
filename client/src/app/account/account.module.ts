@@ -15,6 +15,7 @@ import { reducers } from './store/reducers';
 import { LoaderModule } from '../shared/modules/loader/loader.module';
 import { Actions, EffectsModule } from '@ngrx/effects';
 import { AccountEffect } from './store/effects/account.effect';
+import { ToastService } from '../shared/services/toast.service';
 
 
 
@@ -22,7 +23,7 @@ import { AccountEffect } from './store/effects/account.effect';
   declarations: [
     LoginPageComponent,
     RegisterPageComponent,
-    AccountSettingPageComponent
+    AccountSettingPageComponent,
   ],
   imports: [
     CommonModule,
@@ -39,7 +40,8 @@ import { AccountEffect } from './store/effects/account.effect';
   providers: [
     provideHttpClient(withInterceptorsFromDi()),
     AuthService,
-    Actions
+    Actions,
+    ToastService
   ],
 })
 export class AccountModule { }

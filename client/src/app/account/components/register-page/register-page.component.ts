@@ -3,9 +3,9 @@ import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { UserRequestRegister } from '../../types/account.interfaces';
 import { Observable, Subscription } from 'rxjs';
 import { AuthService } from '../../services/auth.service';
-// import { Store, select } from '@ngrx/store';
-// import { isLoadingSelector } from '../../store/selectors';
-// import { registerAction } from '../../store/actions/account.action';
+import { registerAction } from '../../store/actions/account.action';
+import { Store, select } from '@ngrx/store';
+import { isLoadingSelector } from '../../store/selectors';
 
 @Component({
   selector: 'app-register-page',
@@ -19,15 +19,14 @@ export class RegisterPageComponent implements OnInit {
   isLoadingSelector$!: Observable<boolean | null>
 
   constructor(
-      private auth: AuthService
-    // private store: Store
+      private store: Store
   ) { }
 
 
 
   ngOnInit() {
     this.initForm()
-    // this.initValues()
+    this.initValues()
   }
   
 
@@ -48,10 +47,10 @@ export class RegisterPageComponent implements OnInit {
   }
 
 
-  // initValues()
-  // {
-  //   this.isLoadingSelector$ = this.store.pipe(select(isLoadingSelector))
-  // }
+  initValues()
+  {
+    this.isLoadingSelector$ = this.store.pipe(select(isLoadingSelector))
+  }
 
 
   
@@ -68,11 +67,11 @@ export class RegisterPageComponent implements OnInit {
       lastName: this.form.value.lastName,
     };
 
-    this.auth.register(user).subscribe(()=>{
-      console.log('Успешно!');
-    },)
+    // this.auth.register(user).subscribe(()=>{
+    //   console.log('Успешно!');
+    // },)
 
-    // this.store.dispatch(registerAction({ user }))
+    this.store.dispatch(registerAction({ user }))
 
     this.form.enable();
   }

@@ -1,11 +1,13 @@
-import { Component } from '@angular/core';
+import { Component, ViewChild } from '@angular/core';
 import {Injectable, OnDestroy, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute, Params, Router } from '@angular/router';
 import { Observable, Subscription } from 'rxjs';
 import { UserRequestLogin } from '../../types/account.interfaces';
-import { AuthService } from '../../services/auth.service';
-// import { isLoadingSelector } from '../../store/selectors';
+import { loginAction } from '../../store/actions/account.action';
+import { select, Store } from '@ngrx/store';
+import { isLoadingSelector } from '../../store/selectors';
+import { ToastService } from '../../../shared/services/toast.service';
 
 @Component({
   selector: 'app-login-page',
@@ -18,24 +20,23 @@ export class LoginPageComponent implements OnInit, OnDestroy {
   formLoginSub$!: Subscription
   paramsSub$!: Subscription
   params!: any
-  // isLoadingSelector$!: Observable<boolean | null>
-
+  isLoadingSelector$!: Observable<boolean | null>
 
   constructor(
     private route: ActivatedRoute,
-    private auth: AuthService,
-    private router: Router,
+    private store: Store,
+    private toast: ToastService
     ) {}
 
 
     ngOnInit(): void {
       this.initionalForm()
-      // this.initValues()
+      this.initValues()
     }
   
-    // initValues() {
-    //   this.isLoadingSelector$ = this.store.pipe(select(isLoadingSelector))
-    // }
+    initValues() {
+      this.isLoadingSelector$ = this.store.pipe(select(isLoadingSelector))
+    }
 
   
     ngAfterViewInit(): void {
@@ -72,14 +73,11 @@ export class LoginPageComponent implements OnInit, OnDestroy {
       this.paramsSub$ = this.route.queryParams.subscribe({
         next: (params: Params) => {
           if (params['registered']) {
-            // this.messageService.add({ severity: 'success', summary: 'Теперь вы можете зайти в систему используя свои данные', detail: 'Поздравляем!' });
-            // alert('Теперь вы можете зайти в систему используя свои данные')
+            this.toast.show('Теперь вы можете зайти в систему используя свои данные!', 'success');
           } else if (params['accessDenied']) {
-            // this.messageService.add({ severity: 'error', summary: 'Сначала авторизируйтесь в системе', detail: 'Введите свои данные' });
-            // alert('Сначала авторизируйтесь в системе')
+            this.toast.show('Сначала авторизируйтесь в системе!', 'error');
           } else if (params['sessionFailed']) {
-            // alert('Пожалуйста войдите в систему заново')
-            // this.messageService.add({ severity: 'error', summary: 'Пожалуйста войдите в систему заново', detail: 'Попробуйте еще раз' });
+            this.toast.show('Пожалуйста войдите в систему заново!', 'info');
           }
         }
       });
@@ -95,9 +93,12 @@ export class LoginPageComponent implements OnInit, OnDestroy {
         password: this.form.value.password,
       };
 
-      this.auth.login(user).subscribe(()=>{
-        this.router.navigate(['/account-settings-page'])
-      },)
 
+      try {
+        this.store.dispatch(loginAction({ user }))
+      } catch (error) {
+        console.log(error);
+        
+      }
     }
 }

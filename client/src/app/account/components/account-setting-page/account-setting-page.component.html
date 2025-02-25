@@ -2,8 +2,7 @@
 <loader *ngIf="isLoadingSelector$ | async"></loader>
 
 
-<!-- <div class="account_page" *ngIf="currentUser"> -->
-<div class="account_page" >
+<div class="account_page" *ngIf="currentUser">
     <form [formGroup]="form" (ngSubmit)="onSubmitProfile()">
         <div class="avatar">
             <img [src]="[avatar]" alt="Изображение">

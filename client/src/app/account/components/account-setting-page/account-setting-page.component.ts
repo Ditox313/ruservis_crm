@@ -26,7 +26,9 @@ export class AccountSettingPageComponent {
   @ViewChild('upload') upload!: ElementRef;
 
 
+
   constructor(private store: Store) { }
+
 
   ngOnInit(): void {
     this.initionalForm();

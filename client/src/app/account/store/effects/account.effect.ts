@@ -23,6 +23,7 @@ import {AuthService} from '../../services/auth.service'
 import {of} from 'rxjs'
 import {Router} from '@angular/router'
 import { UserResponceRegister } from '../../types/account.interfaces'
+import { ToastService } from '../../../shared/services/toast.service';
 
 
 
@@ -33,6 +34,7 @@ export class AccountEffect {
   constructor(
     private authService: AuthService,
     private router: Router,
+    private toast: ToastService
   ) {}
 
   // Инжектируем по новому
@@ -47,8 +49,7 @@ export class AccountEffect {
             return loginSuccessAction({data: data}); 
           }),
           catchError((errorResponse: HttpErrorResponse) => {
-            // this.messageService.add({ severity: 'error', summary: `${errorResponse.error.message}`, detail: 'Попробуйте еще раз' });
-            alert('Попробуйте еще раз')
+            this.toast.show(`${errorResponse.error.message}!, Попробуйте еще раз`, 'error');
             return of(
               loginFailureAction({ errors: errorResponse.error.errors })
             );
@@ -63,7 +64,8 @@ export class AccountEffect {
       this.actions$.pipe(
         ofType(loginSuccessAction),
         tap(() => {
-          this.router.navigate(['/list-smena']);
+          this.router.navigate(['/account-settings-page']);
+          this.toast.show('Добро пожаловать!', 'success');
         })
       ),
     { dispatch: false }
@@ -81,8 +83,7 @@ export class AccountEffect {
             return logoutSuccessAction();
           }),
           catchError((errorResponse: HttpErrorResponse) => {
-            // this.messageService.add({ severity: 'error', summary: `Ошибка выхода из системы`, detail: 'Попробуйте еще раз' });
-            alert('Ошибка выхода из системы')
+            this.toast.show('Ошибка выхода из системы!, Попробуйте еще раз', 'error');
             return of(
               logoutFailureAction({ errors: 'Ошибка выхода из системы' })
             );
@@ -108,8 +109,7 @@ export class AccountEffect {
           }),
 
           catchError((errorResponse: HttpErrorResponse) => {
-            // this.messageService.add({ severity: 'error', summary: `${errorResponse.error.message}`, detail: 'Попробуйте еще раз' });
-            alert('Ошибка выхода из системы')
+            this.toast.show(`${errorResponse.error.message}!, Попробуйте еще раз`, 'error');
             return of(
               registerFailureAction({ errors: errorResponse.error.message })
             );
@@ -144,12 +144,11 @@ export class AccountEffect {
         return this.authService.updateUser(user, avatar).pipe(
           map((data) => {
             // this.messageService.add({ severity: 'success', summary: `Пользователь обновлен`, detail: 'Успешно!' });
-            alert('Пользователь обновлен')
+            this.toast.show(`Пользователь обновлен успешно!`, 'success');
             return updateUserSuccessAction({ data: data });
           }),
           catchError((errorResponse: HttpErrorResponse) => {
-            // this.messageService.add({ severity: 'error', summary: `Ошибка обновления`, detail: 'Попробуйте еще раз' });
-            alert('Ошибка обновления')
+            this.toast.show(`Ошибка обновления!, Попробуйте еще раз`, 'error');
             return of(
               updateUserFailureAction({ errors: errorResponse.error.errors })
             );
