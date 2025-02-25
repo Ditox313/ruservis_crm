@@ -1,6 +1,6 @@
 header
 {
-    height: 80px;
+    height: 50px;
     background-color: #EEF2F5;
     padding: 20px;
     display: flex;
@@ -22,59 +22,65 @@ header
     font-family: 'Montserrat', sans-serif;
 }
 
+.avatar_trigger
+{
+    display: flex;
+}
+
 .avatar_trigger img
 {
-    width: 48px;
     border-radius: 5px;
     cursor: pointer;
-    height: 41px;
+    width: 40px;
+    height: 40px;
 }
 
 .account_info
 {
-    min-width: 280px;
-    height: auto;
-    background-color: #EEF2F5;
-    position: absolute;
-    top: 80px;
-    transform: translateX(-52%);
-    transition: all 0.3s;
-    padding: 15px;
-    text-align: right;
-    z-index: 999;
+    margin-left: 10px;
+    display: flex;
+    flex-direction: column;
 }
 
-.account_info_dn
-{
-    display: none;
-    transition: all 0.3s;
-}
 
 .account_info div:first-child
 {
     text-transform: uppercase;
-    color: #333;
+    color: var(--black);
     font-family: 'Montserrat', sans-serif;
-    font-size: 16px;
-    line-height: 18px;
+    font-size: 14px;
+    line-height: 16px;
     margin-bottom: 10px;
 }
 
 .account_info div:last-child
 {
-    border-bottom: 1px solid #194A9E;
     display: inline-block;
     cursor: pointer;
+    color: var(--red);
+    font-size: 14px;
+    line-height: 16px;
+    margin-left: auto;
 }
 
 
 .account
 {
     display: flex;
+    align-items: center;
 }
 
 .back
 {
     margin-right: 20px;
+    background-color: var(--main);
+    display: inline-flex;
+    padding: 5px 12px;
+    border-radius: 4px;
+    cursor: pointer;
 }
 
+.back svg
+{
+    margin-left: -1px;
+}
