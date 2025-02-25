@@ -2,6 +2,7 @@ import { HttpClient } from '@angular/common/http';
 import { Injectable } from "@angular/core";
 import { Observable, of, tap } from 'rxjs';
 import { UserRequestLogin, UserRequestRegister, UserResponceLogin, UserResponceRegister } from '../types/account.interfaces';
+import { ToastService } from '../../shared/services/toast.service';
 
 // Обрати внимание в proxy.conf.json никаких звездочек типа /api/* быть не должно. иначае будет ошибка cannot post!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
 
@@ -18,7 +19,7 @@ import { UserRequestLogin, UserRequestRegister, UserResponceLogin, UserResponceR
 export class AuthService {
   private token:string = ''; 
 
-  constructor(private http: HttpClient) {}
+  constructor(private http: HttpClient,  private toast: ToastService) {}
 
   
   // Регистрация пользователя
@@ -37,7 +38,7 @@ export class AuthService {
           this.setToken(token);
         },
         error: (err) => {
-          console.error('Ошибка при авторизации:', err);
+          this.toast.show(`${err.error.message}!, Попробуйте еще раз!`, 'error');
         },
       })
     );

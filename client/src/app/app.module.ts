@@ -12,13 +12,11 @@ import { TokenInterceptor } from './shared/other/token.interceptor';
 import { provideStore, StoreModule } from '@ngrx/store';
 import { EffectsModule } from '@ngrx/effects';
 import { provideStoreDevtools } from '@ngrx/store-devtools';
-import { ToastComponent } from './shared/components/toast/toast.component';
 
 
 @NgModule({
   declarations: [
     AppComponent,
-    ToastComponent
   ],
   imports: [
     BrowserModule,

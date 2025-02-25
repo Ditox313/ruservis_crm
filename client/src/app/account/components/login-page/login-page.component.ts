@@ -97,8 +97,6 @@ export class LoginPageComponent implements OnInit, OnDestroy {
       try {
         this.store.dispatch(loginAction({ user }))
       } catch (error) {
-        console.log(error);
-        
       }
     }
 }

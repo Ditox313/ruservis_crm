@@ -46,10 +46,11 @@ export class AccountEffect {
       switchMap(({ user }) => {
         return this.authService.login(user).pipe(
           map((data) => {
+            this.toast.show(`Добро пожаловать в систему ${data.currentUser.secondName} ${data.currentUser.name}!`, 'success');
             return loginSuccessAction({data: data}); 
           }),
           catchError((errorResponse: HttpErrorResponse) => {
-            this.toast.show(`${errorResponse.error.message}!, Попробуйте еще раз`, 'error');
+            this.toast.show(`${errorResponse.error.message}!, Попробуйте еще раз!`, 'error');
             return of(
               loginFailureAction({ errors: errorResponse.error.errors })
             );
@@ -65,7 +66,6 @@ export class AccountEffect {
         ofType(loginSuccessAction),
         tap(() => {
           this.router.navigate(['/account-settings-page']);
-          this.toast.show('Добро пожаловать!', 'success');
         })
       ),
     { dispatch: false }
@@ -83,7 +83,7 @@ export class AccountEffect {
             return logoutSuccessAction();
           }),
           catchError((errorResponse: HttpErrorResponse) => {
-            this.toast.show('Ошибка выхода из системы!, Попробуйте еще раз', 'error');
+            this.toast.show('Ошибка выхода из системы!, Попробуйте еще раз!', 'error');
             return of(
               logoutFailureAction({ errors: 'Ошибка выхода из системы' })
             );
@@ -109,7 +109,7 @@ export class AccountEffect {
           }),
 
           catchError((errorResponse: HttpErrorResponse) => {
-            this.toast.show(`${errorResponse.error.message}!, Попробуйте еще раз`, 'error');
+            this.toast.show(`${errorResponse.error.message}!, Попробуйте еще раз!`, 'error');
             return of(
               registerFailureAction({ errors: errorResponse.error.message })
             );
@@ -143,7 +143,6 @@ export class AccountEffect {
       switchMap(({ user, avatar }) => {
         return this.authService.updateUser(user, avatar).pipe(
           map((data) => {
-            // this.messageService.add({ severity: 'success', summary: `Пользователь обновлен`, detail: 'Успешно!' });
             this.toast.show(`Пользователь обновлен успешно!`, 'success');
             return updateUserSuccessAction({ data: data });
           }),
