@@ -1,9 +1,9 @@
-<!-- <header *ngIf="currentUser">
+<header *ngIf="currentUser">
     <div class="page_title">{{title}} <span *ngIf="number">{{number}}</span></div>
 
     <div class="account">
         <div class="back" (click)="isGoBack()">
-
+            Назад
         </div>
 
         <div class="avatar_trigger" (click)="setVisibleAccountInfo()">
@@ -15,27 +15,7 @@
             <div (click)="logout()">ВЫЙТИ</div>
         </div>
     </div>
-</header> -->
-
-
-
-<header>
-    <div class="page_title">{{title}} <span *ngIf="number">{{number}}</span></div>
-
-    <div class="account">
-        <div class="back" (click)="isGoBack()">
-            <!-- <p-button icon="pi pi-chevron-left" styleClass="p-button-sm"></p-button> -->
-        </div>
-
-        <div class="avatar_trigger" (click)="setVisibleAccountInfo()">
-            <!-- <img src="{{currentUser.avatar}}" alt="user"> -->
-             аватар
-        </div>
-
-        <div  class="account_info"  #accountInfo>
-            <div>ФИО</div>
-            <div (click)="logout()">ВЫЙТИ</div>
-        </div>
-    </div>
 </header>
+
+
 

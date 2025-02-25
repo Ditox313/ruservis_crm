@@ -2,10 +2,10 @@ import { Component, Input, OnInit } from '@angular/core';
 import { Observable } from 'rxjs';
 import { Location } from '@angular/common';
 import { UserResponceRegister } from '../../../../../account/types/account.interfaces';
-// import { Store, select } from '@ngrx/store';
-// import { currentUserSelector } from 'src/app/account/store/selectors';
-// import { UserResponceRegister } from 'src/app/account/types/account.interfaces';
-// import { logoutAction } from 'src/app/account/store/actions/account.action';
+import { currentUserSelector } from '../../../../../account/store/selectors';
+import { select, Store } from '@ngrx/store';
+import { logoutAction } from '../../../../../account/store/actions/account.action';
+
 
 @Component({
   selector: 'app-header-app-layout',
@@ -24,7 +24,7 @@ export class HeaderAppLayoutComponent implements OnInit {
 
   
   constructor(
-    // private store: Store, 
+    private store: Store, 
     private location: Location
   ) { }
   
@@ -35,22 +35,22 @@ export class HeaderAppLayoutComponent implements OnInit {
 
 
   initValues() {
-    // this.currentUserSelector$ = this.store.pipe(select(currentUserSelector))
-    // this.currentUserSelector$.subscribe({
-    //   next: (user)=>{
-    //     this.currentUser = user
-    //   }
-    // })
+    this.currentUserSelector$ = this.store.pipe(select(currentUserSelector))
+    this.currentUserSelector$.subscribe({
+      next: (user)=>{
+        this.currentUser = user
+      }
+    })
   }
 
 
   setVisibleAccountInfo()
   {
-    // this.isVisibleAccountInfo = !this.isVisibleAccountInfo
+    this.isVisibleAccountInfo = !this.isVisibleAccountInfo
   }
 
   logout(): void {
-    // this.store.dispatch(logoutAction())
+    this.store.dispatch(logoutAction())
   }
 
   isGoBack() {
