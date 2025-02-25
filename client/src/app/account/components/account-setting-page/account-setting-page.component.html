@@ -9,7 +9,7 @@
 
             <div class="upload_btns">
                 <input type="file" class="dn" #upload (change)="onFileUploadAvatar($event)">
-                <div (click)="triggerClickForUploadAvatar()">111</div>
+                <div (click)="triggerClickForUploadAvatar()">Загрузить</div>
             </div>
         </div>
 
@@ -75,7 +75,7 @@
                 </div>
             </fieldset>
 
-            <button [disabled]="form.invalid">Кнопка</button>
+            <button class="xs_submit" [disabled]="form.invalid">Обновить</button>
 
         </div>
     </form>

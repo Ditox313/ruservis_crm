@@ -1,7 +1,7 @@
 header
 {
     height: 50px;
-    background-color: #EEF2F5;
+    background-color: var(--grey);
     padding: 20px;
     display: flex;
     align-items: center;
@@ -18,7 +18,7 @@ header
 {
     text-transform: uppercase;
     font-size: 21px;
-    color: #333;
+    color: var(--black);
     font-family: 'Montserrat', sans-serif;
 }
 
@@ -84,3 +84,31 @@ header
 {
     margin-left: -1px;
 }
+
+
+@media screen and (max-width: 768px) {
+    .page_title
+    {
+        font-size: 18px;
+    }
+}
+
+
+
+@media screen and (max-width: 700px) {
+
+    .page_title
+    {
+        font-size: 18px;
+        margin-bottom: 20px;
+    }
+
+    header
+    {
+        height: auto;
+        flex-direction: column;
+        align-items: flex-end;
+    }
+}
+
+

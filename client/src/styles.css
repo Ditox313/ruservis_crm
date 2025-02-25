@@ -1,71 +1,45 @@
 /* You can add global styles to this file, and also import other style files */
 @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;700&display=swap');
 
-html, body { height: 100%; }
-body { margin: 0; font-family: 'Montserrat' !important; overflow-x: hidden; color: var(--black);}
-.container {
-    padding-right: 15px;
-    padding-left: 15px;
-    margin-right: auto;
-    margin-left: auto;
-    font-family: 'Montserrat', sans-serif;
-    max-width: 1600px;
-}
-
-
-.xs_default_shadow
-{
-    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2); /* Глубокая мягкая тень */
-}
-
-div
-{
-    box-sizing: border-box;
-}
-
 
 :root {
     --main: #F28510;
     --white: #fff;
     --red: #FF2400;
     --black: #333;
+    --grey: #EEF2F5;
 }
 
 
 
-.errorValidate {
-    display: block;
-    color: var(--white);
-    padding-left: 25px;
-    margin-bottom: 10px;
-    background-color: var(--red);
-    text-align: left;
+html, body {
+    height: 100%;
+}
+
+body {
+    margin: 0;
+    font-family: 'Montserrat' !important;
+    overflow-x: hidden;
+    color: var(--black);
+}
+
+div {
+    box-sizing: border-box;
 }
 
 
-
-.invalid
-{
-    border-bottom:2px solid var(--red) !important;
-}
-
-
-
-
-a
-{
+a {
     text-decoration: none;
 }
-img, svg
-{
+
+img, svg {
     max-width: 100%;
     height: auto;
 }
 
 
 
-h1,h2,h3,h4,h5,h6,input,textarea
-{
+h1, h2, h3, h4, h5, h6, input, textarea {
     font-family: 'Montserrat', sans-serif !important;
 }
 
@@ -83,24 +57,20 @@ fieldset {
     padding: 0.01em 0 0 0;
 }
 
-ul
-{
+ul {
     margin: 0;
     padding: 0;
 }
 
-li
-{
+li {
     list-style-type: none;
 }
 
-small
-{
+small {
     display: inline-block;
 }
 
-fieldset
-{
+fieldset {
     display: inline-block;
 }
 
@@ -110,9 +80,50 @@ fieldset
 }
 
 
-p
-{
+p {
     margin: 0;
+}
+
+
+
+input {
+    padding: 10px 15px;
+    outline: none;
+    border: 1px solid rgba(51, 51, 51, 0.3);
+    border-radius: 4px;
+}
+
+
+
+
+.container {
+    padding-right: 15px;
+    padding-left: 15px;
+    margin-right: auto;
+    margin-left: auto;
+    font-family: 'Montserrat', sans-serif;
+    max-width: 1600px;
+}
+
+
+.xs_default_shadow {
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+}
+
+
+.errorValidate {
+    display: block;
+    color: var(--white) !important;
+    padding-left: 25px;
+    margin-bottom: 10px;
+    background-color: var(--red);
+    text-align: left;
+}
+
+
+
+.invalid {
+    border-bottom: 2px solid var(--red) !important;
 }
 
 
@@ -129,28 +140,38 @@ p
     color: white;
     z-index: 1000;
     animation: fadeIn 0.5s, fadeOut 0.5s 2.5s;
-  }
-  
-  .toast-success {
-    background-color: #28a745;
-  }
-  
-  .toast-error {
-    background-color: #dc3545;
-  }
-  
-  .toast-info {
-    background-color: #17a2b8;
-  }
-  
-  @keyframes fadeIn {
-    from { opacity: 0; }
-    to { opacity: 1; }
-  }
-  
-  @keyframes fadeOut {
-    from { opacity: 1; }
-    to { opacity: 0; }
-  }
+}
 
-  /* End toasts */
+.toast-success {
+    background-color: #28a745;
+}
+
+.toast-error {
+    background-color: #dc3545;
+}
+
+.toast-info {
+    background-color: #17a2b8;
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+    }
+
+    to {
+        opacity: 1;
+    }
+}
+
+@keyframes fadeOut {
+    from {
+        opacity: 1;
+    }
+
+    to {
+        opacity: 0;
+    }
+}
+
+/* End toasts */

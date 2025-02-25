@@ -35,12 +35,18 @@ export class AppLayoutComponent implements OnInit {
     },
   ];
 
+  isSidebarOpen = true; // Состояние для открытия/закрытия сайдбара
+
   constructor( 
     private store: Store
   ) { }
   
   ngOnInit(): void {
     this.initValues()
+
+    window.matchMedia('(max-width: 576px)').addEventListener('change', (event) => {
+      this.isSidebarOpen = !this.isSidebarOpen;
+    });
   }
 
 
@@ -50,6 +56,10 @@ export class AppLayoutComponent implements OnInit {
     this.store.subscribe(state => {
       localStorage.setItem('appState', JSON.stringify(state))
     })
+  }
+
+  toggleSidebar() {
+    this.isSidebarOpen = !this.isSidebarOpen; // Переключаем состояние
   }
 
 
