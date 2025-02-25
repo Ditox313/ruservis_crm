@@ -1,6 +1,7 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { Observable } from 'rxjs';
 import { Location } from '@angular/common';
+import { UserResponceRegister } from '../../../../../account/types/account.interfaces';
 // import { Store, select } from '@ngrx/store';
 // import { currentUserSelector } from 'src/app/account/store/selectors';
 // import { UserResponceRegister } from 'src/app/account/types/account.interfaces';
@@ -15,9 +16,9 @@ import { Location } from '@angular/common';
 export class HeaderAppLayoutComponent implements OnInit {
   @Input() title: string = '';
   @Input() number?: any = '';
-  // currentUserSelector$!: Observable<UserResponceRegister | null | undefined>
-  // currentUser!: UserResponceRegister | null | undefined
-  // isVisibleAccountInfo: boolean = false
+  currentUserSelector$!: Observable<UserResponceRegister | null | undefined>
+  currentUser!: UserResponceRegister | null | undefined
+  isVisibleAccountInfo: boolean = false
 
 
 

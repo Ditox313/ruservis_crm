@@ -34,6 +34,7 @@ import { AccountEffect } from './store/effects/account.effect';
     LoaderModule,
     StoreModule.forFeature('account', reducers),
     EffectsModule.forFeature([AccountEffect]),
+    LayoutsModule
   ],
   providers: [
     provideHttpClient(withInterceptorsFromDi()),
