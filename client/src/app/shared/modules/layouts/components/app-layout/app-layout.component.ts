@@ -1,8 +1,7 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
 import { Observable } from 'rxjs';
 import { select } from '@ngrx/store';
-import { Store } from '@ngrx/store';
-
+import { Store } from '@ngrx/store';``
 import { updateStateAction } from '../../../../../account/store/actions/account.action';
 import { isLoadingSelector, tokenSelector } from '../../../../../account/store/selectors';
 

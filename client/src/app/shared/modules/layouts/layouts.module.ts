@@ -2,10 +2,10 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { AuthLayoutComponent } from './components/auth-layout/auth-layout.component';
 import { RouterModule } from '@angular/router';
-// import { LoaderModule } from '../loader/loader.module';
 import { HeaderAppLayoutComponent } from './components/header-app-layout/header-app-layout.component';
 import { AuthService } from '../../../account/services/auth.service';
 import { AppLayoutComponent } from './components/app-layout/app-layout.component';
+import { LoaderModule } from '../loader/loader.module';
 
 
 
@@ -19,7 +19,7 @@ import { AppLayoutComponent } from './components/app-layout/app-layout.component
   imports: [
     CommonModule,
     RouterModule,
-    // LoaderModule,
+    LoaderModule,
   ],
   providers: [ AuthService],
   exports: [
