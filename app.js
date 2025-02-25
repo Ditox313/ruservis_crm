@@ -52,7 +52,9 @@ app.use('/api/account/auth', authRoutes);
 
 
 // Добавляем возможность отдавать с сервера картинки по запросу. (Когда будет запрос к uploads, делай эту папку статической)
-app.use('/uploads/account', express.static('uploads/account'));
+app.use('/files/account', express.static('files/account'));
+app.use('/files/account/users', express.static('files/account/users'));
+
 
 
 // Экспортируем наружу

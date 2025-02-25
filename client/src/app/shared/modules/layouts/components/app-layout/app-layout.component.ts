@@ -19,19 +19,19 @@ export class AppLayoutComponent implements OnInit {
   links: any = [
     {
       url: '/test',
-      name: 'Смены',
-      icon: 'pi-check-square'
+      name: 'Консоль',
+      icon: 'fa fa-line-chart'
     },
     {
       url: '/test2',
-      name: 'Автопарк',
-      icon: 'pi-car'
+      name: 'Персонал',
+      icon: 'fa fa-users'
     },
 
     {
       url: '/account-settings-page',
       name: 'Аккаунт',
-      icon: 'pi-sign-in'
+      icon: 'fa fa-user'
     },
   ];
 
